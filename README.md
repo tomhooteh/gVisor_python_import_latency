@@ -33,9 +33,9 @@ python3 -m pip install numpy
   ```
   > if you want to test importing non python standard library internal. you need to change dockerfile to install module first.
   > adding belowing instruction before CMD python
-  ```
-  RUN pip install "modulename"
-  ```
+  > ```
+  > RUN pip install "modulename"
+  > ```
   
   
 4. run container and use volume to mount python modules
