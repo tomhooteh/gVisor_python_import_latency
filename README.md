@@ -3,7 +3,7 @@
 ## Prerequire
 - OS: linux kernel 3.17+
 - Docker
-- python3
+- python3 and pip
 
 ## Environment Setup
 
