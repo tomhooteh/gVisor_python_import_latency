@@ -24,14 +24,14 @@ python3 -m pip install numpy
   import requests
   print(requests.__file__)
   ```
-  - result: you need to remember this path for later volume's path 
+  - result: you need to remember this path for later volume's path
   ![](https://i.imgur.com/kChNEsg.png)
 
 3. build container with Dockerfile:
   ```
   sudo docker build -t python_import_test
   ```
-  > if you want to import non python standard library. you need to change dockerfile to install module first.
+  > if you want to test importing non python standard library internal. you need to change dockerfile to install module first.
   > adding belowing instruction before CMD python
   ```
   RUN pip install "modulename"
@@ -43,15 +43,20 @@ python3 -m pip install numpy
   ```
   sudo docker run --rm -v /usr/lib/python3/dist-packages/:/app/utils python_import
   ```
-  
+  - result:
+  - ![](https://i.imgur.com/ZweSxsr.png)
   - run container by runsc(gVisor)
   ```
   sudo docker run --rm --runtime=runsc -v /usr/lib/python3/dist-packages/:/app/utils python_import
   ```
-  
-  
-  
- 
+  - result: 
+  - ![](https://i.imgur.com/jBRjXeu.png)
+  - run native python
+  ```
+  python3 import_native.py
+  ```
+  - result:
+  - ![](https://i.imgur.com/ZaKjwSF.png)
  
 ## REFERENCES
 - [The True Cost of Containing: A gVisor Case Study](https://www.usenix.org/system/files/hotcloud19-paper-young.pdf)
