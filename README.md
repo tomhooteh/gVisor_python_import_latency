@@ -21,38 +21,11 @@
   ```
   - result:
 
+  you need to remember this path for later volume's path
   ![find_path](https://user-images.githubusercontent.com/9292747/145703315-9d845c31-b2db-44a5-b4a0-ed332afbaa2f.png)
 
-3. write two python file to import from internal ann external(by volume)
-  - import_internal.py:
-  ```
-  import time
-  start = time.perf_counter()
-  import requests
-  end = time.perf_counter() - start
-  print('{:.3f}s for importing requests'.format(end))
-  ```
-  - import_external.py:
-  ```
-  import time
-  start = time.perf_counter()
-  from utils import requests
-  end = time.perf_counter() - start
-  print('{:.3f}s for external importing requests'.format(end))
-  ```
-4. build container by Dockerfile:
-  - Dockerfile
-  ```
-  FROM python:3.6.9
-  WORKDIR /app
-  COPY import_external.py /app/
-  COPY import_internal.py /app/
 
-  ENV PYTHONPATH /app/utils
-  ENV PATH=$PATH:/app/utils
-
-  CMD python import_external.py ; python import_internal.py
-  ```
+3. build container with Dockerfile:
   - Build:
   ```
   sudo docker build -t python_import_test
