@@ -25,7 +25,7 @@ python3 -m pip install numpy
   print(requests.__file__)
   ```
   - result: you need to remember this path for later volume's path
-  ![](https://i.imgur.com/kChNEsg.png)
+  - ![](https://i.imgur.com/kChNEsg.png)
 
 3. build container with Dockerfile:
   ```
